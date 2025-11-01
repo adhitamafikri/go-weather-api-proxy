@@ -1,0 +1,33 @@
+#root {
+  background-color: #f0f0f0;
+  max-width: 420px;
+  height: 100vh;
+  margin: auto;
+}
+
+header,
+main,
+footer {
+  padding: 1rem;
+}
+
+header {
+  background-color: #f99349;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  height: var(--header-height);
+}
+
+main {
+  background-color: #fff;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  height: var(--main-height);
+}
+
+footer {
+  background-color: #f99349;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  height: var(--footer-height);
+}

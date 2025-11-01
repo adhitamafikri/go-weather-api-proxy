@@ -48,5 +48,5 @@ func GetCityHandler(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"message": "Geocoding Endpoint", "data": geocodingResponse})
+	c.JSON(http.StatusOK, gin.H{"message": "Successfully fetched the cities", "data": geocodingResponse})
 }

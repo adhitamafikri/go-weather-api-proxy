@@ -5,8 +5,10 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/adhitamafikri/go-weather-api-proxy/router/openmeteo"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 )
@@ -26,6 +28,13 @@ func main() {
 
 	// Create a Gin router with default middleware (logger and recovery)
 	r := gin.Default()
+	r.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"http://localhost:5173"},
+		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE"},
+		AllowHeaders:     []string{"Content-Type"},
+		AllowCredentials: true,
+		MaxAge:           12 * time.Hour,
+	}))
 
 	// Root route
 	r.GET("/", func(c *gin.Context) {
@@ -36,7 +45,7 @@ func main() {
 	{
 		v1 := r.Group("/api/v1")
 		{
-			v1.GET("/city", openmeteo.GetCityHandler)
+			v1.GET("/geocoding/cities", openmeteo.GetCityHandler)
 			v1.GET("/forecast", openmeteo.GetForecastHandler)
 		}
 	}

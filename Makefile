@@ -6,6 +6,11 @@ server-up:
 	echo "Starting backend server..."
 	cd ./backend && go run main.go
 
+.PHONY: client-up
+client-up:
+	echo "Starting frontend..."
+	cd ./frontend && pnpm dev
+
 .PHONY: up
 up:
 	docker compose up -d --build
