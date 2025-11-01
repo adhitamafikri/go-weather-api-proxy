@@ -26,7 +26,7 @@ func GetForecastHandler(c *gin.Context) {
 	}
 
 	// Build the full OpenMeteo Forecast API URL
-	fullUrl := fmt.Sprintf("%s/forecast?latitude=%s&longitude=%s&forecast_days=1&hourly=temperature_2m,relative_humidity_2m,rain,uv_index", forecastApiBaseUrl, latitude, longitude)
+	fullUrl := fmt.Sprintf("%s/forecast?latitude=%s&longitude=%s&forecast_days=7&hourly=temperature_2m,relative_humidity_2m,rain,uv_index", forecastApiBaseUrl, latitude, longitude)
 
 	// Make the HTTP GET request to the OpenMeteo Forecast API
 	resp, err := http.Get(fullUrl)
