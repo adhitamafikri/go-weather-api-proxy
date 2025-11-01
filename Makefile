@@ -1,7 +1,10 @@
-include .env
-
 default:
 	echo "The Go Weather API Proxy"
+
+.PHONY: server-up
+server-up:
+	echo "Starting backend server..."
+	cd ./backend && go run main.go
 
 .PHONY: up
 up:
@@ -18,4 +21,3 @@ redis-cli:
 .PHONY: redis-logs
 redis-logs:
 	docker compose logs -f redis
-
