@@ -23,6 +23,7 @@ main {
   box-sizing: border-box;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   height: var(--main-height);
+  overflow-y: auto;
 }
 
 footer {
