@@ -2,23 +2,45 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
+	"os"
 
+	"github.com/adhitamafikri/go-weather-api-proxy/router/openmeteo"
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
 
 func main() {
 	fmt.Println("The Go Weather API Proxy")
 
+	envErr := godotenv.Load()
+	if envErr != nil {
+		log.Fatal("Error loading .env file")
+	}
+
+	appPort := os.Getenv("APP_PORT")
+	if appPort == "" {
+		appPort = "8080"
+	}
+
 	// Create a Gin router with default middleware (logger and recovery)
 	r := gin.Default()
 
-	// Define a route that will return a simple "Hello, World!" response
+	// Root route
 	r.GET("/", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{"message": "Hello, World!"})
+		c.JSON(http.StatusOK, gin.H{"message": "The Go Weather API Proxy!"})
 	})
 
-	// Start server on port 8080 (default)
-	// Server will listen on 0.0.0.0:8080 (localhost:8080 on Windows)
-	r.Run()
+	// API routes
+	{
+		v1 := r.Group("/api/v1")
+		{
+			v1.GET("/geocoding", openmeteo.GeocodingRoutes())
+			v1.GET("/forecast", openmeteo.ForecastRoutes())
+		}
+	}
+
+	// Start server on port
+	r.Run(":" + appPort)
 }
