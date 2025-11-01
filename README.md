@@ -25,4 +25,9 @@ Accelerated learning in Go topic that is covering:
 - Cache responses in Redis (5-10 min TTL)
 - Accept city name, return formatted weather data
 - Handle API errors gracefully
+
 🤽‍♂️ Skills hit: HTTP client, JSON parsing, Redis GET/SET, error propagation, external API integration
+
+## System Design
+
+![System Design](./docs/Go%20Weather%20API%20Proxy.png "System Design")
