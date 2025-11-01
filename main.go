@@ -36,8 +36,8 @@ func main() {
 	{
 		v1 := r.Group("/api/v1")
 		{
-			v1.GET("/geocoding", openmeteo.GeocodingRoutes())
-			v1.GET("/forecast", openmeteo.ForecastRoutes())
+			v1.GET("/city", openmeteo.GetCityHandler)
+			v1.GET("/forecast", openmeteo.GetForecastHandler)
 		}
 	}
 

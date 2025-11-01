@@ -6,3 +6,4 @@
 [ ] Connect Redis
 [ ] Cache the response data per-IP, per-ClientID -> TTL 2-5 minutes
 [ ] Implement Rate Limiting per-IP, per-ClientID
+[ ] Implement code hot reloading with Air
